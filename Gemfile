@@ -65,6 +65,7 @@ gem 'ruby-progressbar'
 gem 'responders', '~> 2.0'
 gem 'activerecord_any_of'
 gem 'rest-client'
+gem 'rack-attack', '~> 4.2.0'
 
 # consider uncommenting these when we want to mess around with json parsing
 #gem 'oj'
