@@ -19,7 +19,7 @@ module.exports = class DiscussionPage
     element(By.css('.dropdown-toggle')).click()
 
   notificationDropdown: ->
-    element(By.css('.lmo-navbar-btn--notifications'))
+    element(By.css('.lmo-navbar__btn--notifications'))
 
   mostRecentComment: ->
     element.all(By.css('.thread-item--comment')).last()
