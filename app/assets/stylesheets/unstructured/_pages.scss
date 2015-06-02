@@ -536,7 +536,7 @@ body.pages.privacy .container h3.subheader { margin-bottom: 24px; }
     }
 }
 
-.container#contact_message {
+.container#contact-message {
 
   abbr { border-bottom: none; }
 
@@ -558,12 +558,12 @@ body.pages.privacy .container h3.subheader { margin-bottom: 24px; }
     margin: 8px 0 10px 0;
   }
   select { margin: 8px 0 10px 0; }
-  #direct_contact { margin-top: 30px; }
+  #direct-contact { margin-top: 30px; }
 
-  #contact-faq {
-    margin-bottom: 50px;
-    h1 {
-      font-size: 40px;
+  #faq {
+    margin-top: 50px;
+    h2 {
+      font-size: 24px;
       margin-bottom: 10px;
     }
     h3 {
@@ -577,8 +577,8 @@ body.pages.privacy .container h3.subheader { margin-bottom: 24px; }
     }
     img { margin-bottom: 30px; }
   }
-  #contact_form {
-    h1 {
+  #contact-form {
+    h2 {
       font-size: 40px;
       margin-bottom: 20px;
       margin-top: 25px;
@@ -765,11 +765,11 @@ body.pages.translation {
   tr.spacer-row {
     background-color: $lighter-grey;
     opacity: 0.5;
-    td { 
+    td {
       height: 1px;
       padding: 0 15px;
     }
-    
+
   }
 }
 
