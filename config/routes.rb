@@ -46,6 +46,7 @@ Loomio::Application.routes.draw do
     resources :memberships, only: [:index, :create, :update, :destroy] do
       get :autocomplete, on: :collection
       get :my_memberships, on: :collection
+      get :invitables, on: :collection
       patch :make_admin, on: :member
       patch :remove_admin, on: :member
     end
@@ -84,10 +85,6 @@ Loomio::Application.routes.draw do
 
     resources :contacts, only: :index do
       get :import, on: :collection
-    end
-
-    resources :users, only: [] do
-      get :invitables, on: :collection
     end
 
     resources :search_results, only: :index
