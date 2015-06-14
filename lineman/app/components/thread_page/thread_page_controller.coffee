@@ -1,4 +1,4 @@
-angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, Records, MessageChannelService, CurrentUser, ModalService, DiscussionForm, ScrollService) ->
+angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routeParams, $location, $rootScope, Records, MessageChannelService, CurrentUser, ModalService, DiscussionForm, ScrollService, AbilityService) ->
 
   @performScroll = ->
     elementToFocus = @elementToFocus()
@@ -49,6 +49,9 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
 
   @showContextMenu = =>
     @canEditDiscussion(@discussion)
+
+  @canStartProposal = ->
+    AbilityService.canStartProposal(@discussion)
 
   @canEditDiscussion = =>
     CurrentUser.canEditDiscussion(@discussion)
