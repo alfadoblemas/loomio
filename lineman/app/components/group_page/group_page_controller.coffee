@@ -17,7 +17,7 @@ angular.module('loomioApp').controller 'GroupPageController', ($rootScope, $rout
     CurrentUser.membershipFor(@group)?
 
   @joinGroup = ->
-    Records.memberships.initialize(
+    Records.memberships.build(
       group_id: @group.id
       user_id: CurrentUser.id).save()
 
