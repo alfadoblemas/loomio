@@ -45,7 +45,7 @@ angular.module('loomioApp').factory 'InvitationForm', ->
         !_.contains $scope.group.memberIds(), memberId
       users = _.filter Records.users.find(memberIds), (user) ->
         !user.membershipFor($scope.group) and
-        matchesFragment(user.searchFragment) and
+        matchesFragment(user.searchFragment, user.name, user.username) and
         !existsAlready('user', 'id', user.id)
 
       _.map users, (user) ->
@@ -69,6 +69,7 @@ angular.module('loomioApp').factory 'InvitationForm', ->
 
     matchesFragment = (fields...) ->
       _.some _.map fields, (field) ->
+        return false unless field?
         ~field.search new RegExp($scope.fragment, 'i')
 
     existsAlready = (type, uniqueField, value) ->
