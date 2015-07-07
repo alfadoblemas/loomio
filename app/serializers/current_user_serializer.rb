@@ -1,8 +1,7 @@
 class CurrentUserSerializer < UserSerializer
   attributes :email
 
-  def gravatar_md5
-    Digest::MD5.hexdigest(object.email.to_s.downcase)
+  def include_gravatar_md5?
+    true
   end
-
 end
