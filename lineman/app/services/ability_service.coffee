@@ -72,3 +72,19 @@ angular.module('loomioApp').factory 'AbilityService', (CurrentUser) ->
     canDeactivateUser: ->
       _.all CurrentUser.memberships(), (membership) ->
         !membership.admin or membership.group().adminIds().length > 1
+
+    canViewGroup: (group) ->
+      group.visibleToPublic() or
+      CurrentUser.isMemberOf(group) or
+      (group.visibleToOrganisation() and CurrentUser.isMemberOf(group.parent()))
+
+    canJoinGroup: (group) ->
+      (group.membershipGrantedUpon == 'request') and
+      @canViewGroup(group) and
+      !CurrentUser.isMemberOf(group)
+
+    canRequestMembership: (group) ->
+      (group.membershipGrantedUpon == 'approval') and
+      @canViewGroup(group) and
+      !CurrentUser.isMemberOf(group) and
+      !group.hasPendingMembershipRequestFrom(CurrentUser)
