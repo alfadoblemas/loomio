@@ -46,11 +46,6 @@
   a{ color: $primary-text-color; }
 }
 
-.lmo-navbar__item--user {
-  .lmo-navbar__btn{
-    padding: 9px 8px 10px;
-  }
-}
 
 .lmo-navbar__btn{
   box-shadow: none;
@@ -59,9 +54,20 @@
   border-radius: 0;
   line-height: 23px;
   padding: 10px 6px 11px;
-  &:hover, &:focus {
+  &:focus, &:hover {
     background: $list-hover-color;
     box-shadow: none;
+    color: #333;
+    outline: 0;
+  }
+  &:hover {
+    color: white;
+  }
+}
+
+.lmo-navbar__item--user {
+  .lmo-navbar__btn{
+    padding: 9px 8px 10px;
   }
 }
 
