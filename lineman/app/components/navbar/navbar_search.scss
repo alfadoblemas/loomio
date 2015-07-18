@@ -37,10 +37,9 @@
   position: absolute;
   background-color: white;
 
-  top: 46px;
+  top: $navbar-height;
   text-align: left;
   max-width: 320px;
-  width: 100%;
   box-shadow: 5px 5px 10px #ccc;
   overflow-y: scroll;
   max-height: 800px;
@@ -56,6 +55,10 @@
   }
 
   .navbar-search-results {
-    right: 8px;
+    right: 0px;
+    left: 0px;
+    margin: 2px 8px;
+    min-width: none;
+    max-width: none;
   }
 }
