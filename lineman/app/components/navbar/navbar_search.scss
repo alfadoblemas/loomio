@@ -40,6 +40,7 @@
   top: $navbar-height;
   text-align: left;
   max-width: 320px;
+  margin-top: 2px;
   box-shadow: 5px 5px 10px #ccc;
   overflow-y: scroll;
   max-height: 800px;
@@ -58,7 +59,7 @@
     right: 0px;
     left: 0px;
     margin: 2px 8px;
-    min-width: none;
+    min-width: 250px;
     max-width: none;
   }
 }
