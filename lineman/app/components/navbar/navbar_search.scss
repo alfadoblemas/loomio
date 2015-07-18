@@ -1,5 +1,5 @@
 .navbar-search {
-  padding: 4px 5px 5px;
+  padding: 4px 5px;
 
   input {
     margin-bottom: 0px;
@@ -14,7 +14,7 @@
   position: relative;
   background-color: $background-color;
   color: $primary-text-color;
-  @media (max-width: $screen-xs-min){width: 100px;}
+  /*@media (max-width: $screen-xs-min){width: 100px;}*/
   @media (min-width: $screen-xs-min){width: 250px;}
 }
 
@@ -48,4 +48,10 @@
 
 .navbar-search-list-item {
   background: white;
+}
+
+@media (max-width: 480px) {
+  .navbar-search-input{
+    width: 100%;
+  }
 }

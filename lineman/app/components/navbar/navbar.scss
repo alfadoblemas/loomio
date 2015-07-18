@@ -13,21 +13,28 @@
   .fa-group {
     font-size: 1.1em;
   }
+
   .fa-bell-o {
     font-size: 1.2em;
   }
+
   .fa-bell {
     font-size: 1.2em;
   }
+
 }
 
 .lmo-navbar-item-container--left{
-  width: 40%;
+  width: 42%;
 }
 
 .lmo-navbar-item-container--right{
   text-align: right;
-  width: 60%;
+  width: 58%;
+}
+
+.lmo-navbar-item-container__sub{
+  display: inline-block;
 }
 
 .lmo-navbar__item{
@@ -100,6 +107,16 @@
 
   .lmo-navbar-item-container--right{
     width: 61%;
+
+    .lmo-navbar-item-container__sub--left{
+      width: 59%;
+    }
+
+    .lmo-navbar-item-container__sub--right{
+      text-align: center;
+      width: 41%;
+    }
+
     .lmo-navbar__item--notifications {
       .lmo-navbar__btn{
         padding: 10px 5px 11px;

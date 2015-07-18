@@ -15,11 +15,13 @@
         %i.fa.fa-lg.fa-group>
         %span.lmo-navbar__btn-label{translate: 'navbar.groups'}
   .lmo-navbar-item-container.lmo-navbar-item-container--right
-    .lmo-navbar__item{role: 'search'}
-      %navbar_search
-    .lmo-navbar__item.lmo-navbar__item--notifications
-      %notifications
-    .lmo-navbar__item.lmo-navbar__item--user
-      %navbar_user_options
+    .lmo-navbar-item-container__sub.lmo-navbar-item-container__sub--left
+      .lmo-navbar__item{role: 'search'}
+        %navbar_search
+    .lmo-navbar-item-container__sub.lmo-navbar-item-container__sub--right
+      .lmo-navbar__item.lmo-navbar__item--notifications
+        %notifications
+      .lmo-navbar__item.lmo-navbar__item--user
+        %navbar_user_options
   %thread_lintel
   %flash
