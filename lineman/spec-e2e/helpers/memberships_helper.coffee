@@ -19,7 +19,7 @@ module.exports = new class MembershipsHelper
     @enabledCoordinatorCheckbox().click()
 
   currentCoordinatorsCount: ->
-    element.all(By.css('.coordinator')).count()
+    element.all(By.css('.user-avatar--coordinator')).count()
 
   membershipsPageHeader: ->
     element(By.css('.memberships-page__memberships h2'))
