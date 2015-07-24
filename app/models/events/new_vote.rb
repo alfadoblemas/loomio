@@ -20,6 +20,10 @@ class Events::NewVote < Event
     event
   end
 
+  def group_key
+    discussion.group.key
+  end
+
   def vote
     eventable
   end

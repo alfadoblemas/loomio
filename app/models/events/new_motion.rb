@@ -19,6 +19,10 @@ class Events::NewMotion < Event
     event
   end
 
+  def group_key
+    discussion.group.key
+  end
+
   def motion
     eventable
   end

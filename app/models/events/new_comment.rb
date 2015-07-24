@@ -30,6 +30,10 @@ class Events::NewComment < Event
 
   end
 
+  def group_key
+    discussion.group.key
+  end
+
   def discussion_key
     discussion.key
   end
