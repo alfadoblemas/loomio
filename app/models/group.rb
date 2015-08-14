@@ -137,7 +137,7 @@ class Group < ActiveRecord::Base
            as: :invitable,
            class_name: 'Invitation',
            dependent: :destroy
- 
+
   has_many :comments, through: :discussions
 
   after_initialize :set_defaults
@@ -167,6 +167,8 @@ class Group < ActiveRecord::Base
   has_many :all_subgroups,
            class_name: 'Group',
            foreign_key: :parent_id
+
+  has_many :webhooks, as: :hookable
 
   has_one :subscription, dependent: :destroy
 

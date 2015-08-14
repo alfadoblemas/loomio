@@ -1,9 +1,10 @@
 class Webhook < ActiveRecord::Base
-  belongs_to :discussion
+  belongs_to :hookable, polymorphic: true
 
-  validates_presence_of :uri
-  validates_presence_of :discussion
+  validates :uri, presence: true
+  validates :hookable, presence: true
   validates_inclusion_of :kind, in: %w[slack]
+  validates :event_types, length: { minimum: 1 }
 
   def headers
     {}

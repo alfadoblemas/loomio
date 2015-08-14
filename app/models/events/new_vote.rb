@@ -13,10 +13,6 @@ class Events::NewVote < Event
       ThreadMailer.delay.new_vote(user, event)
     end
 
-    vote.discussion.webhooks.each do |webhook|
-      WebhookService.publish! webhook: webhook, event: event
-    end
-
     event
   end
 

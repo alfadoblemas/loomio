@@ -22,10 +22,6 @@ class Events::NewComment < Event
       ThreadMailer.delay.new_comment(user, event)
     end
 
-    comment.discussion.webhooks.each do |webhook|
-      WebhookService.publish! webhook: webhook, event: event
-    end
-
     event
 
   end

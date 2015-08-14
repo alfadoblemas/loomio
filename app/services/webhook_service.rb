@@ -12,11 +12,11 @@ class WebhookService
   private
 
   def self.payload_for(webhook, event)
-    serializer_for(webhook).new(event, root: false).to_json
+    WebhookSerializer.new(webhook_object_for(webhook, event), root: false).to_json
   end
 
-  def self.serializer_for(webhook)
-    "Webhooks::#{webhook.kind.classify}Serializer".constantize
+  def self.webhook_object_for(webhook, event)
+    "Webhooks::#{webhook.kind.classify}::#{event.kind.classify}".constantize.new(event)
   end
 
 end
