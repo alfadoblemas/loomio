@@ -13,7 +13,7 @@ Webhooks::Slack::Base = Struct.new(:event) do
     [{
       title:       attachment_title,
       text:        attachment_text,
-      fields:      Array(attachment_fields),
+      fields:      attachment_fields,
       fallback:    attachment_fallback
     }]
   end
@@ -25,9 +25,9 @@ Webhooks::Slack::Base = Struct.new(:event) do
   def motion_vote_field
     {
       title: "Vote on this proposal",
-      value: "#{vote_on_this("agree")} · " +
+      value: "#{vote_on_this("yes")} · " +
              "#{vote_on_this("abstain")} · " +
-             "#{vote_on_this("disagree")} · " +
+             "#{vote_on_this("no")} · " +
              "#{vote_on_this("block")}"
     }
   end
@@ -37,7 +37,7 @@ Webhooks::Slack::Base = Struct.new(:event) do
   end
 
   def vote_on_this(position)
-    discussion_link position, { position: position, proposal_id: eventable.key }
+    discussion_link position, { position: position, proposal: eventable.key }
   end
 
   def discussion_link(text = nil, params = {})

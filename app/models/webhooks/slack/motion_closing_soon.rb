@@ -13,6 +13,6 @@ class Webhooks::Slack::MotionClosingSoon < Webhooks::Slack::Base
   end
 
   def attachment_fields
-    motion_vote_field
+    [motion_vote_field]
   end
 end

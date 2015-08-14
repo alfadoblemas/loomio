@@ -16,7 +16,7 @@ class Webhooks::Slack::NewMotion < Webhooks::Slack::Base
   end
 
   def attachment_fields
-    motion_vote_field
+    [motion_vote_field]
   end
 
 end
