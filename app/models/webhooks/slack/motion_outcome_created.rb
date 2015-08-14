@@ -13,6 +13,6 @@ class Webhooks::Slack::MotionOutcomeCreated < Webhooks::Slack::Base
   end
 
   def attachment_fields
-    [view_it_on_loomio_field]
+    [view_motion_on_loomio]
   end
 end
