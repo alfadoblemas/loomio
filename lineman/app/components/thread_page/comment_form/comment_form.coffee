@@ -3,15 +3,18 @@ angular.module('loomioApp').directive 'commentForm', ->
   restrict: 'E'
   templateUrl: 'generated/components/thread_page/comment_form/comment_form.html'
   replace: true
-  controller: ($scope, FlashService, Records, CurrentUser) ->
+  controller: ($scope, FlashService, Records, CurrentUser, KeyEventService) ->
     group = $scope.comment.discussion().group()
     discussion = $scope.comment.discussion()
 
     $scope.submit = ->
+      $scope.isDisabled = true
       $scope.comment.save().then ->
+        $scope.isDisabled = false
         $scope.comment = Records.comments.build(discussion_id: discussion.id)
-        $scope.$emit('commentSaveSuccess')
         FlashService.success('comment_form.messages.created')
+      , ->
+        $scope.isDisabled = false
 
     $scope.$on 'replyToCommentClicked', (event, parentComment) ->
       $scope.comment.parentId = parentComment.id
@@ -31,3 +34,5 @@ angular.module('loomioApp').directive 'commentForm', ->
     $scope.fetchByNameFragment = (fragment) ->
       $scope.updateMentionables(fragment)
       Records.memberships.fetchByNameFragment(fragment, group.key).then -> $scope.updateMentionables(fragment)
+
+    KeyEventService.submitOnEnter $scope

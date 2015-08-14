@@ -36,6 +36,9 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
       _.filter @membershipRequestsView.data(), (membershipRequest) ->
         !membershipRequest.isPending()
 
+    hasPreviousMembershipRequests: ->
+      _.some @previousMembershipRequests()
+
     pendingInvitations: ->
       _.filter @invitationsView.data(), (invitation) ->
         invitation.isPending()
@@ -107,6 +110,9 @@ angular.module('loomioApp').factory 'GroupModel', (BaseModel) ->
 
     isSubgroup: ->
       @parentId?
+
+    isArchived: ->
+      @archivedAt?
 
     isParent: ->
       !@parentId?

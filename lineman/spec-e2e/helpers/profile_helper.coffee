@@ -4,9 +4,6 @@ module.exports = new class ProfileHelper
     element(By.css('.navbar-user-options button')).click()
     element(By.css('.navbar-user-options__profile-link')).click()
 
-  load: ->
-    browser.get('http://localhost:8000/development/setup_user_profile')
-
   updateProfile: (name, username, email) ->
     @changeName(name)
     @changeUsername(username)
@@ -32,8 +29,4 @@ module.exports = new class ProfileHelper
     @emailInput().clear().sendKeys(text or 'mynew@email.com')
 
   submitForm: ->
-<<<<<<< HEAD
     element(By.css('.profile-page__update-button')).click()
-=======
-    element(By.css('')).click()
->>>>>>> add support to test emails

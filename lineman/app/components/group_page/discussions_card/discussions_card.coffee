@@ -6,6 +6,7 @@ angular.module('loomioApp').directive 'discussionsCard', ->
   controller: ($scope, Records, ModalService, DiscussionForm, KeyEventService, LoadingService, AbilityService, CurrentUser) ->
     $scope.loaded = 0
     $scope.perPage = 25
+    $scope.canLoadMoreDiscussions = true
 
     $scope.loadMore = ->
       options =
@@ -13,14 +14,16 @@ angular.module('loomioApp').directive 'discussionsCard', ->
         from:     $scope.loaded
         per:      $scope.perPage
       $scope.loaded += $scope.perPage
-      Records.discussions.fetchByGroup options
+      Records.discussions.fetchByGroup(options).then (data) ->
+        if (data.discussions or []).length < $scope.perPage
+          $scope.canLoadMoreDiscussions = false
 
     LoadingService.applyLoadingFunction $scope, 'loadMore'
     $scope.loadMore()
 
     $scope.openDiscussionForm = ->
       ModalService.open DiscussionForm,
-                        discussion: -> Records.discussions.initialize(group_id: $scope.group.id, uses_markdown: true)
+                        discussion: -> Records.discussions.build(group_id: $scope.group.id)
 
     $scope.showThreadsPlaceholder = ->
       AbilityService.canAdministerGroup($scope.group) and $scope.group.discussions().length <= 1

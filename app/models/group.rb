@@ -137,7 +137,7 @@ class Group < ActiveRecord::Base
            as: :invitable,
            class_name: 'Invitation',
            dependent: :destroy
-
+ 
   has_many :comments, through: :discussions
 
   after_initialize :set_defaults

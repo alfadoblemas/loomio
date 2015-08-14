@@ -32,13 +32,13 @@ angular.module('loomioApp').factory 'UserModel', (BaseModel) ->
       @notificationsView.data()
 
     contacts: ->
-      @contactsView.data()
+      @contactsView.data() 
       # we can just assume all contacts are CurrentUser... but this still feels nice.
       # also it's feeling more and more like we need to separate out CurrentUser concerns
       # (like abilities) from regular other user concerns.
 
     groups: ->
-      @recordStore.groups.find(id: { $in: @groupIds() })
+      _.filter @recordStore.groups.find(id: { $in: @groupIds() }), (group) -> !group.isArchived()
 
     parentGroups: ->
       _.filter @groups(), (group) -> group.parentId == null

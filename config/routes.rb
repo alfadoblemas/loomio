@@ -7,6 +7,7 @@ Loomio::Application.routes.draw do
     get 'setup_group_to_join'
     get 'setup_group_with_multiple_coordinators'
     get 'setup_discussion'
+    get 'setup_multiple_discussions'
     get 'setup_busy_discussion'
     get 'setup_discussion_with_comment'
     get 'setup_proposal'
@@ -18,6 +19,7 @@ Loomio::Application.routes.draw do
     get 'setup_user_email_settings'
     get 'setup_all_notifications'
     get 'setup_group_with_pending_invitation'
+    get 'setup_group_with_subgroups'
   end
 
   scope '/angular', controller: 'angular', path: 'angular', as: 'angular' do
@@ -110,6 +112,7 @@ Loomio::Application.routes.draw do
     end
 
     resources :did_not_votes, only: :index
+
     resources :comments,    only: [:create, :update, :destroy] do
       post :like, on: :member
       post :unlike, on: :member
@@ -144,7 +147,7 @@ Loomio::Application.routes.draw do
       get :unauthorized
     end
     devise_scope :user do
-      resources :sessions, only: [:create, :destroy]
+      resource :sessions, only: [:create, :destroy]
     end
     get '/attachments/credentials',      to: 'attachments#credentials'
     get  '/contacts/:importer/callback', to: 'contacts#callback'
@@ -383,11 +386,6 @@ Loomio::Application.routes.draw do
 
   get '/users/invitation/accept' => redirect {|params, request|  "/invitations/#{request.query_string.gsub('invitation_token=','')}"}
 
-  get '/contributions' => redirect('/crowd')
-  get '/contributions/thanks' => redirect('/crowd')
-  get '/contributions/callback' => redirect('/crowd')
-  get '/crowd' => redirect('https://love.loomio.org/')
-
   get '/dashboard', to: 'dashboard#show', as: 'dashboard'
 
   # this is a dumb thing
@@ -398,7 +396,6 @@ Loomio::Application.routes.draw do
       get :about
       get :privacy
       get :purpose
-      get :services
       get :pricing
       get :terms_of_service
       get :third_parties

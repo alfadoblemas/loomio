@@ -71,7 +71,7 @@ describe 'InvitationFormController', ->
       @user = @factory.create 'users', name: 'RickDazo', username: 'dazzricko'
       @someOtherGroup = @factory.create 'groups'
       @factory.create 'memberships', groupId: @someOtherGroup.id, userId: @user.id
-      @factory.create 'memberships', groupId: @someOtherGroup.id, userId: @currentUser.id
+      @factory.create 'memberships', groupId: @someOtherGroup.id, userId: @currentUser.id      
 
     it 'can find a user with no search query', ->
       expect(_.pluck(@scope.invitables(), 'name')).toContain('RickDazo')
