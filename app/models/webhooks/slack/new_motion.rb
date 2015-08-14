@@ -1,6 +1,6 @@
 class Webhooks::Slack::NewMotion < Webhooks::Slack::Base
   def text
-    I18n.t :"webhooks.slack.new_motion", author: eventable.author.name, name: eventable.discussion.name
+    I18n.t :"webhooks.slack.new_motion", author: eventable.author.name, name: eventable.discussion.title
   end
 
   def attachment_fallback

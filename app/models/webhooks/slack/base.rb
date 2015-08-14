@@ -1,4 +1,5 @@
 Webhooks::Slack::Base = Struct.new(:event) do
+  include Routing
 
   def icon_url
     ""
@@ -36,11 +37,11 @@ Webhooks::Slack::Base = Struct.new(:event) do
   end
 
   def vote_on_this(position)
-    discussion_link text: position, position: position, proposal_id: eventable.key
+    discussion_link position, { position: position, proposal_id: eventable.key }
   end
 
-  def discussion_link(text: nil, params: {})
-    "<#{Routing.discussion_url(params)}|#{text || eventable.discussion.title}>"
+  def discussion_link(text = nil, params = {})
+    "<#{discussion_url(eventable.discussion, params)}|#{text || eventable.discussion.title}>"
   end
 
   def eventable
