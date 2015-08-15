@@ -48,7 +48,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
       MessageChannelService.subscribeTo "/discussion-#{@discussion.key}"
 
   @init Records.discussions.find $routeParams.key
-  Records.discussions.findOrFetchByKey($routeParams.key).then @init, (error) ->
+  Records.discussions.findOrFetchById($routeParams.key).then @init, (error) ->
     $rootScope.$broadcast('pageError', error)
 
   $scope.$on 'threadPageEventsLoaded',    (event) =>

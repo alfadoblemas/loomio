@@ -3,14 +3,14 @@ angular.module('loomioApp').factory 'DiscussionRecordsInterface', (BaseRecordsIn
     model: DiscussionModel
 
     fetchByGroup: (options = {}) ->
-      @remote.fetch
+      @fetch
         params:
           group_id: options['group_id']
           from: options['from']
           per: options['per']
 
     fetchDashboard: (options = {}) ->
-      @remote.fetch
+      @fetch
         path: 'dashboard'
         params: options
         cacheKey: dashboardCacheKeyFor(options)
@@ -19,7 +19,7 @@ angular.module('loomioApp').factory 'DiscussionRecordsInterface', (BaseRecordsIn
       "#{options['filter']}Dashboard" unless options['filter'] == 'show_all'
 
     fetchInbox: ->
-      @remote.fetchDashboard
+      @fetchDashboard
         filter: 'show_unread'
         from: 0
         per: 100
