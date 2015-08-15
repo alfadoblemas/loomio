@@ -3,7 +3,7 @@ angular.module('loomioApp').factory 'DidNotVoteRecordsInterface', (BaseRecordsIn
     model: DidNotVoteModel
 
     fetchByProposal: (proposalKey, options = {}) ->
-      @remote.fetch
+      @fetch
         params:
           motion_id: proposalKey
           per: options['per']

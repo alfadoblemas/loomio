@@ -3,5 +3,5 @@ angular.module('loomioApp').factory 'ContactRecordsInterface', (BaseRecordsInter
     model: ContactModel
 
     fetchInvitables: (fragment, groupKey) ->
-      @remote.fetch
+      @fetch
         params: { q: fragment, group_key: groupKey }

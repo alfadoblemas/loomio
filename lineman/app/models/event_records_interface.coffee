@@ -3,7 +3,7 @@ angular.module('loomioApp').factory 'EventRecordsInterface', (BaseRecordsInterfa
     model: EventModel
 
     fetchByDiscussion: (discussionKey, options = {}) ->
-      @remote.fetch
+      @fetch
         params:
           discussion_key: discussionKey
           from: options['from']
