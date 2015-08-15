@@ -7,11 +7,9 @@ angular.module('loomioApp').factory 'VoteModel', (BaseModel) ->
     defaultValues: ->
       statement: ''
 
-    author: ->
-      @recordStore.users.find(@authorId)
-
-    proposal: ->
-      @recordStore.proposals.find(@proposalId)
+    relationships: ->
+      @belongsTo 'author'
+      @belongsTo 'proposal'
 
     authorName: ->
       @author().name
