@@ -12,7 +12,7 @@ angular.module('loomioApp').factory 'CommentModel', (BaseModel) ->
     relationships: ->
       @belongsTo 'author', from: 'users'
       @belongsTo 'discussion'
-      @belongsTo 'parent', from: 'comments'
+      @belongsTo 'parent', from: 'comments', by: 'parentId'
 
     serialize: ->
       data = @baseSerialize()

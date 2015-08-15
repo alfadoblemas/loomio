@@ -9,7 +9,7 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
       closingAt: moment().add(3, 'days').startOf('hour')
 
     relationships: ->
-      @hasMany 'votes'
+      @hasMany 'votes', sortBy: 'createdAt', sortDesc: true
       @hasMany 'didNoteVotes'
       @belongsTo 'author', from: 'users'
       @belongsTo 'discussion'

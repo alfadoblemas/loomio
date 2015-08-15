@@ -15,7 +15,7 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
         undefined
 
     defaultValues: =>
-      private: @privateDefaultValue()
+      private: null
       usesMarkdown: true
       lastSequenceId: 0
       firstSequenceId: 0
@@ -24,13 +24,12 @@ angular.module('loomioApp').factory 'DiscussionModel', (BaseModel) ->
       description: ''
 
     relationships: ->
+      @belongsTo 'group'
+      @belongsTo 'author', from: 'users'
+
       @hasMany 'comments', dynamicView: false
       @hasMany 'events', sortBy: 'sequenceId'
       @hasMany 'proposals', sortBy: 'createdAt', sortDesc: true
-
-      @belongsTo 'author', from: 'users'
-      @belongsTo 'group'
-
       # not ready @hasOne 'reader', from: 'discussionReaders', with: 'id'
 
     translationOptions: ->
