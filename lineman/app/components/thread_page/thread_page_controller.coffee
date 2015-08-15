@@ -34,7 +34,7 @@ angular.module('loomioApp').controller 'ThreadPageController', ($scope, $routePa
     if discussion and !@discussion?
       @discussion = discussion
       @group      = @discussion.group()
-      @comment    = Records.comments.build(discussion_id: @discussion.id)
+      @comment    = Records.comments.build(discussionId: @discussion.id)
       if @discussion.hasActiveProposal() and $location.search().proposal == @discussion.activeProposal().key
         @proposalToFocus = @discussion.activeProposal()
 

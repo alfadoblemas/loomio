@@ -10,7 +10,7 @@ angular.module('loomioApp').factory 'ProposalModel', (BaseModel) ->
 
     relationships: ->
       @hasMany 'votes', sortBy: 'createdAt', sortDesc: true
-      @hasMany 'didNoteVotes'
+      @hasMany 'didNotVotes'
       @belongsTo 'author', from: 'users'
       @belongsTo 'discussion'
 

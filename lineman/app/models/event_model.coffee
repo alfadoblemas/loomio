@@ -22,14 +22,14 @@ angular.module('loomioApp').factory 'EventModel', (BaseModel) ->
     }
 
     relationships: ->
-      belongsTo: 'group'
-      belongsTo: 'membership'
-      belongsTo: 'membershipRequests'
-      belongsTo: 'discussion'
-      belongsTo: 'comment'
-      belongsTo: 'proposal'
-      belongsTo: 'vote'
-      belongsTo: 'actor', from: 'users'
+      @belongsTo 'group'
+      @belongsTo 'membership'
+      @belongsTo 'membershipRequests'
+      @belongsTo 'discussion'
+      @belongsTo 'comment'
+      @belongsTo 'proposal'
+      @belongsTo 'vote'
+      @belongsTo 'actor', from: 'users'
 
     delete: ->
       @deleted = true

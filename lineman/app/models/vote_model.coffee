@@ -8,7 +8,7 @@ angular.module('loomioApp').factory 'VoteModel', (BaseModel) ->
       statement: ''
 
     relationships: ->
-      @belongsTo 'author'
+      @belongsTo 'author', from: 'users'
       @belongsTo 'proposal'
 
     authorName: ->
